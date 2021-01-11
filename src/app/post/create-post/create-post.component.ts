@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostService } from 'src/app/shared/post.service';
-import { PostRequestPayLoad } from './post-request-payload';
+import { PostService } from 'src/app/post/post.service';
+import { PostRequestPayLoad } from '../view-post/post-request-payload';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
-import { SubredditService } from 'src/app/shared/subreddit.service';
-import { SubredditModel } from 'src/app/shared/subreddit-model';
+import { SubredditService } from 'src/app/subreddit/subreddit.service';
+import { SubredditModel } from 'src/app/subreddit/subreddit-model';
 
 @Component({
   selector: 'app-create-post',

@@ -2,13 +2,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { PostRequestPayLoad } from '../post/create-post/post-request-payload';
-import { PostModel } from './post-model';
+import { CommentModel } from './comment-model';
+import { CommentPayload } from './comment-payload';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class CommentService {
+
+  private commentUrl = 'http://localhost:8080/api/comments/';
+
+  constructor(private http: HttpClient) { }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -25,20 +29,17 @@ export class PostService {
       'Something bad happened; please try again later.');
   }
 
-  private postUrl = 'http://localhost:8080/api/posts/';
+  getAllCommentsForPost(id: number): Observable<Array<CommentModel>> {
 
-  constructor(private http:HttpClient) { }
+    return this.http.get<Array<CommentModel>>
+      (`${this.commentUrl}by-post/${id}`)
+      .pipe(catchError(this.handleError));
 
-  getAllPosts() : Observable<Array<PostModel>>{
-    console.log("INSIDE getAllPosts")
-    return this.http.get<Array<PostModel>>(this.postUrl);
   }
 
-  createPost(postRequestPayload: PostRequestPayLoad) :Observable<PostRequestPayLoad> {
-
-    return this.http.post<PostRequestPayLoad>(
-      this.postUrl,
-      postRequestPayload).pipe(catchError(this.handleError));
-    
+  createComment(commentPayload: CommentPayload): Observable<CommentPayload> {
+    return this.http.post<CommentPayload>(this.commentUrl, commentPayload)
+      .pipe(catchError(this.handleError));
   }
+
 }

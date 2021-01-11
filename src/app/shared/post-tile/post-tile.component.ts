@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 import { faArrowUp, faArrowDown, faComments } from '@fortawesome/free-solid-svg-icons'
-import { PostModel } from '../post-model';
-import { PostService } from '../post.service';
+import { PostModel } from '../../post/post-model';
+import { PostService } from '../../post/post.service';
 
 @Component({
   selector: 'app-post-tile',
@@ -17,7 +18,8 @@ export class PostTileComponent implements OnInit {
   faComments = faComments;
   posts$: Array<PostModel> = [];
   @Input() data: Array<PostModel>;
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService,
+    private router : Router) {
     this.postService.getAllPosts().subscribe(post => {
       console.log("INSIDE HOME COMPONENT START")
       this.posts$ = post;
@@ -30,6 +32,7 @@ export class PostTileComponent implements OnInit {
 
   goToPost(id : number){
 
+    this.router.navigateByUrl(`/view-post/${id}`);
   }
 
 }

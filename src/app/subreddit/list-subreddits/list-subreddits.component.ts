@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SubredditModel } from 'src/app/shared/subreddit-model';
-import { SubredditService } from 'src/app/shared/subreddit.service';
+import { SubredditModel } from 'src/app/subreddit/subreddit-model';
+import { SubredditService } from 'src/app/subreddit/subreddit.service';
 
 @Component({
   selector: 'app-list-subreddits',

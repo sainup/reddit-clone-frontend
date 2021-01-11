@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { SubredditRequestPayload } from '../subreddit/create-subreddit/subreddit-request.payload';
-import { PostModel } from './post-model';
+import { SubredditRequestPayload } from './create-subreddit/subreddit-request.payload';
+import { PostModel } from '../post/post-model';
 import { SubredditModel } from './subreddit-model';
 import { catchError } from 'rxjs/operators';
 

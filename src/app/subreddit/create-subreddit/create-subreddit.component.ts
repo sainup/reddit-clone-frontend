@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
-import { SubredditService } from 'src/app/shared/subreddit.service';
+import { SubredditService } from 'src/app/subreddit/subreddit.service';
 import { SubredditRequestPayload } from './subreddit-request.payload';
 
 @Component({

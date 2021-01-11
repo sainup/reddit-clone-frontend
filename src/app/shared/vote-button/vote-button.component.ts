@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PostModel } from '../post-model';
+import { PostModel } from '../../post/post-model';
 import { faArrowUp , faArrowDown, } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
