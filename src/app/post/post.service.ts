@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { PostRequestPayLoad } from './view-post/post-request-payload';
+import { PostRequestPayLoad } from './create-post/post-request-payload';
 import { PostModel } from './post-model';
 
 @Injectable({

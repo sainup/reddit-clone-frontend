@@ -42,12 +42,7 @@ export class ViewPostComponent implements OnInit {
     //getting comments 
 
     
-    this.commentService.getAllCommentsForPost(this.postId).subscribe(comments =>{
-      this.comment$ = comments;
-      console.log(this.comment$);
-    },err=>{
-      throwError(err);
-    });
+   
 
  // initializing FormGroup
     this.commentForm = new FormGroup({
@@ -67,18 +62,32 @@ export class ViewPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllComments();
   }
 
   postComment(){
     this.commentPayload.text = this.commentForm.get('text').value;
 
     this.commentService.createComment(this.commentPayload).subscribe(data =>{
-     window.location.reload();
+      this.commentForm.get('text').setValue('');
+      this.getAllComments();
       this.toastr.success("Comment added.")
+     
     }, error =>{
-      this.toastr.error('Error Occurred')
-      window.location.reload();
-    })
+      this.commentForm.get('text').setValue('');
+      this.toastr.error("Error Occured.");
+      console.log("Error occuured while creating comments.");
+    });
+
+  }
+
+  getAllComments(){
+    this.commentService.getAllCommentsForPost(this.postId).subscribe(comments =>{
+      this.comment$ = comments;
+      console.log(this.comment$);
+    },err=>{
+      throwError(err);
+    });
   }
 
 }
