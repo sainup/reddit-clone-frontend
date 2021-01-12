@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/shared/auth.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn : boolean = false;
   username : string ;
-  constructor(private authService : AuthService) { 
+  constructor(private authService : AuthService,
+    private router : Router) { 
     
    
   }
@@ -24,4 +26,11 @@ export class HeaderComponent implements OnInit {
     console.log("Is logged in : " , this.isLoggedIn);
   }
 
+  goToUserProfile(){
+    this.router.navigateByUrl('/user-profile/'+this.username);
+  }
+
+  logout(){
+    
+  }
 }

@@ -9,6 +9,7 @@ import { PostModel } from './post-model';
   providedIn: 'root'
 })
 export class PostService {
+ 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -44,5 +45,11 @@ export class PostService {
 
   getPostById(id : Number) : Observable<PostModel>{
     return this.http.get<PostModel>(`${this.postUrl}${id}`);
+  }
+
+  getPostByUsername(username: string) : Observable<Array<PostModel>> {
+
+    return this.http.get<Array<PostModel>>(`${this.postUrl}by-user/${username}`);
+   
   }
 }

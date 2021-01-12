@@ -37,6 +37,11 @@ export class CommentService {
 
   }
 
+  getAllCommentsForUser(username : string ) : Observable<Array<CommentModel>>{
+    return this.http.get<Array<CommentModel>>
+    (`${this.commentUrl}by-user/${username}`);
+  }
+
   createComment(commentPayload: CommentPayload): Observable<CommentPayload> {
     return this.http.post<CommentPayload>(this.commentUrl, commentPayload)
       .pipe(catchError(this.handleError));

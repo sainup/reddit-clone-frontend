@@ -16,21 +16,16 @@ export class PostTileComponent implements OnInit {
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
   faComments = faComments;
-  posts$: Array<PostModel> = [];
-  @Input() data: Array<PostModel>;
-  constructor(private postService: PostService,
-    private router : Router) {
-    this.postService.getAllPosts().subscribe(post => {
-      console.log("INSIDE HOME COMPONENT START")
-      this.posts$ = post;
-      console.log(post);
-    });
+  @Input() post$: Array<PostModel> = [];
+
+  constructor(private router: Router) {
+
   }
 
   ngOnInit(): void {
   }
 
-  goToPost(id : number){
+  goToPost(id: number) {
 
     this.router.navigateByUrl(`/view-post/${id}`);
   }
