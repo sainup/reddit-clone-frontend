@@ -4,7 +4,7 @@ export class CommentModel{
     postId : Number;
     text : string;
     userName: string;
-    createdDate : string;
+    duration : string;
 
 
 
